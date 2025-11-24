@@ -1,28 +1,32 @@
 #include <iostream>
-#include <unistd.h>    
-#include <sys/types.h> 
-#include <sys/wait.h>  
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 
 using namespace std;
 
-int main() {
+int main()
+{
     cout << "Before fork()" << endl;
 
     pid_t pid = fork();
 
-    if (pid < 0) {
+    if (pid < 0)
+    {
         cerr << "Fork failed!" << endl;
         return 1;
-    } 
-    else if (pid == 0) {
+    }
+    else if (pid == 0)
+    {
 
         cout << "Child: Starting work..." << endl;
-        sleep(2); 
+        sleep(2);
         cout << "Child: Finished work!" << endl;
         cout << "Child PID: " << getpid() << ", Parent PID: " << getppid() << endl;
-    } 
-    else {
- 
+    }
+    else
+    {
+
         cout << "Parent: Waiting for child to finish..." << endl;
 
         int status;
